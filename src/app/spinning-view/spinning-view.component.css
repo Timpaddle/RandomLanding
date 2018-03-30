@@ -1,0 +1,13 @@
+.btn{
+    margin-bottom: 15px;
+}
+
+.rerollBtn{
+    margin:auto;
+    display: block;
+}
+
+.randomLocation{
+    font-family:'Burbank';
+    font-size:45px;
+}
