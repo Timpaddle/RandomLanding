@@ -4,7 +4,7 @@ export class LocationService{
 
     locationSubject = new Subject<any[]>();
 
-    moreThanOneSubject = new Subject<boolean>(); // => subject
+    moreThanOneSubject = new Subject<boolean>();
 
     private moreThanOne = true;
     private locations = [
