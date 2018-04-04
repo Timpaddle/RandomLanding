@@ -36,7 +36,7 @@ export class StatsViewComponent implements OnInit{
     this.nbrGame = 0;
     this.damages = 0;
     this.moyDamages = 0;
-    this.previousKillsValue = 0;
+    this.previousDamagesValue = 0;
     this.statsSubscription = this.statsService.statsSubject.subscribe(
       (stats: Stats[]) => {
         this.stats = stats;

@@ -6,7 +6,7 @@ export class StatsService{
 
     private stats: Stats[] = [
     ];
-
+    totDamages: number;
     statsSubject = new Subject<Stats[]>();
 
     emitStats(){
@@ -21,8 +21,6 @@ export class StatsService{
     getGameNbr(){
         return this.stats.length+1;
     }
-
-    
 
     resetStats(){
         this.stats = [];
