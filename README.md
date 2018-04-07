@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Install
 
 1) Get Node from https://nodejs.org/en/ 
+
   Open command prompt for the next steps
 2) Get NPM => npm install -g npm@lastest (verify you get it with npm -v)
 3) Get angular => npm install -g @angular/cli
