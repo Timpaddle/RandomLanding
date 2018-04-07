@@ -6,11 +6,16 @@
     margin:auto;
     display: block;
     font-size: 3rem;
+    width: 250px;
+    height: 70px;
 }
 
-.randomLocation{
+h3.randomLocation{
     font-family:'Burbank';
     font-size:100px;
+    color:white;
+    height: 250px;
+    line-height: 250px;
 }
 
 .container{
@@ -21,4 +26,11 @@
 
 .btnAll{
     font-size: 1.5rem;
+}
+
+.mainContainer{
+    background: url('assets/img/fortnite.jpg');
+    background-position: center center;
+    padding-top: 20px;
+    height: 95vh;
 }

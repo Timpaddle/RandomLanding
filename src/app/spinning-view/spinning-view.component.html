@@ -1,23 +1,24 @@
 
+<div class="mainContainer">
+    <div class="container">
+        <div>
+            <button class="bold btnAll btn btn-sm btn-success"
+                (click)="onAllOn()">ALL ON</button>
+            <button class="bold btnAll btn btn-sm btn-danger"
+                (click)="onAllOff()">ALL OFF </button><br>
 
-<div class="container">
-    <div>
-        <button class="bold btnAll btn btn-sm btn-success"
-            (click)="onAllOn()">ALL ON</button>
-        <button class="bold btnAll btn btn-sm btn-danger"
-            (click)="onAllOff()">ALL OFF </button><br>
+
+        <app-spinning *ngFor = "let location of locations; let i = index "
+                [locationName]="location.name"
+                [locationId]="location.id"
+                [locationStatus]="location.status"
+                [index]="i"></app-spinning>
+        </div>
 
 
-    <app-spinning *ngFor = "let location of locations; let i = index "
-            [locationName]="location.name"
-            [locationId]="location.id"
-            [locationStatus]="location.status"
-            [index]="i"></app-spinning>
+
+        <h3 *ngIf="ready" class="randomLocation text-center">{{ randomLocation.name }}</h3>
+        
+        <button class="bold btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
     </div>
-
-
-
-    <h3 *ngIf="ready" class="randomLocation text-center">{{ randomLocation.name }}</h3>
-    
-    <button class="bold btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
 </div>
