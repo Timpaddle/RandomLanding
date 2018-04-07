@@ -2,9 +2,9 @@
 
 <div class="container">
     <div>
-        <button class="btn btn-sm btn-success"
+        <button class="bold btnAll btn btn-sm btn-success"
             (click)="onAllOn()">ALL ON</button>
-        <button class="btn btn-sm btn-danger"
+        <button class="bold btnAll btn btn-sm btn-danger"
             (click)="onAllOff()">ALL OFF </button><br>
 
 
@@ -19,5 +19,5 @@
 
     <h3 *ngIf="ready" class="randomLocation text-center">{{ randomLocation.name }}</h3>
     
-    <button class="btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
+    <button class="bold btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
 </div>
