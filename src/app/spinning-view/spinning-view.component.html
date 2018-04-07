@@ -1,20 +1,23 @@
 
 
 <div class="container">
+    <div>
+        <button class="btn btn-sm btn-success"
+            (click)="onAllOn()">ALL ON</button>
+        <button class="btn btn-sm btn-danger"
+            (click)="onAllOff()">ALL OFF </button><br>
 
-
-    <button class="btn btn-sm btn-success"
-                    (click)="onAllOn()">ALL ON</button>
-    <button class="btn btn-sm btn-danger"
-                    (click)="onAllOff()">ALL OFF </button><br>
 
     <app-spinning *ngFor = "let location of locations; let i = index "
-                [locationName]="location.name"
-                [locationId]="location.id"
-                [locationStatus]="location.status"
-                [index]="i"></app-spinning>
+            [locationName]="location.name"
+            [locationId]="location.id"
+            [locationStatus]="location.status"
+            [index]="i"></app-spinning>
+    </div>
 
 
-    <h3 class="randomLocation text-center">{{ randomLocation.name }}</h3><br>
-    <br><button class="btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
+
+    <h3 *ngIf="ready" class="randomLocation text-center">{{ randomLocation.name }}</h3>
+    
+    <button class="btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
 </div>

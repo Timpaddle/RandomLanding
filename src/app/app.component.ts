@@ -10,4 +10,5 @@ export class AppComponent{
   title = 'Fortnite Random Landing';
 
 
+
 }

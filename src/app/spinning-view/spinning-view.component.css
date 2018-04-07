@@ -11,3 +11,9 @@
     font-family:'Burbank';
     font-size:45px;
 }
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}

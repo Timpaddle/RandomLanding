@@ -6,22 +6,24 @@
           <!-- formControlName ou on passe un string correspondant au nom du control dans l'objet ts -->
           <div class="row">
             <div class="form-group col-sm-3 col-sm-offset-1">
+              <img class="" src="../assets/img/gold-medal.png" alt="gold metal number one">
               <label for="top">Top :</label>
               <input type="number" id="top" class="form-control" formControlName="top">
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-center">
-              <p class="statsScore bold">Moyenne Top :</p>
-              <!-- {{ moyTop }} -->
+              <p class="statsScore bold">Average Top :</p>
+              {{ moyTop }}
             </div>
 
           </div>
           <div class="row">
             <div class="form-group col-sm-3 col-sm-offset-1">
+              <img src="../assets/img/dead.png" alt="dead face">
               <label for="nbrKills">Kills :</label>
               <input type="number" id="nbrKills" class="form-control" formControlName="nbrKills">
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-center">
-              <p class="statsScore bold">Moyenne Kills :</p>
+              <p class="statsScore bold">Average Kills :</p>
               {{ moyKills | number}}
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-center">
@@ -31,11 +33,12 @@
           </div>
           <div class="row">
             <div class="form-group col-sm-3 col-sm-offset-1">
+              <img src="../assets/img/target.png" alt="target with arrow">
               <label for="damages">Damages :</label>
               <input type="number" id="damages" class="form-control" formControlName="damages">
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-center">
-              <p class="statsScore bold">Moyenne Damages :</p>
+              <p class="statsScore bold">Average Damages :</p>
               {{ moyDamages | number}}
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-center">
@@ -49,11 +52,23 @@
     </div>
     <div #scrollable #list [scrollTop]="list.scrollHeight" class="col-sm-6 scrollable">
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let stat of stats; let i = index">
-          <p class="bold">Game #{{ i+1 }}</p>
-          <span [ngStyle]="{color: getColor()}">{{ stat.top }}</span>
-          <span [ngStyle]="{color: getColor()}">{{ stat.nbrKills }}</span>
-          <span [ngStyle]="{color: getColor()}">{{ stat.damages }}</span>
+        <li class="col-xs-12 list-group-item" *ngFor="let stat of stats; let i = index">
+          <p class="fs2 bold text-center">Game #{{ i+1 }}</p>
+          <div class="statsContainer">
+            <p class="col-xs-12 col-xs-3 col-xs-offset-1">
+                <img class="" src="../assets/img/gold-medal.png" alt="gold metal number one">
+                <span>{{ stat.top }}</span><!--[ngStyle]="{color: getColor()}"-->
+              </p>
+              <p class="col-xs-3 col-xs-offset-1">
+                <img src="../assets/img/dead.png" alt="dead face">
+                <span>{{ stat.nbrKills }}</span><!--[ngStyle]="{color: getColor()}"-->
+              </p>
+              <p class="col-xs-3 col-xs-offset-1">
+                <img src="../assets/img/target.png" alt="target with arrow">
+                <span>{{ stat.damages }}</span> <!--[ngStyle]="{color: getColor()}"-->
+              </p>
+          </div>
+         
           <!-- <div style="width:20px;height:20px;background-color:red;"
           *ngIf="appareilStatus === 'éteint'"></div> -->
         </li>

@@ -4,10 +4,10 @@ import { Subject } from 'rxjs/Subject';
 
 export class StatsService{
 
-    private stats: Stats[] = [
-    ];
+    private stats: Stats[] = [];
     totDamages: number;
     statsSubject = new Subject<Stats[]>();
+    bestGame: number;
 
     emitStats(){
         this.statsSubject.next(this.stats);
@@ -24,5 +24,13 @@ export class StatsService{
 
     resetStats(){
         this.stats = [];
+    }
+
+    getBestGame(){
+        // for(let stat of this.stats){
+        //    return this.stats.indexOf(Math.max.apply(Math,this.stats.map(function(o){o.damages})));
+           return this.stats.indexOf(Math.max.apply(Math,...this.stats.map(function(o){o.damages})));
+        // }
+    
     }
 }

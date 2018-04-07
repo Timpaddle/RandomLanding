@@ -145,7 +145,7 @@ export class LocationService{
         if(range > 1){
             return Math.floor(Math.random()*range);
         } else {
-            console.log('You allready know where to go');
+            alert('Are you kidding me ? You allready know where to go');
         }
     }
 

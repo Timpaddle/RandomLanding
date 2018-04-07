@@ -15,15 +15,19 @@ export class StatsViewComponent implements OnInit{
   statsForm: FormGroup;
   stats: Stats[];
   statsSubscription: Subscription;
-  nbrKills: number
-  previousKillsValue: number;
   nbrGame: number;
+  nbrKills: number;
+  previousKillsValue: number;
   moyKills: number;
   compareKills: number;
   damages: number;
   moyDamages: number;
-  moyTop: number;
   previousDamagesValue: number;
+  moyTop: number;
+  previousTopValue: number;
+  top: number;
+  bestGame: number;
+
 
   constructor(private formBuilder: FormBuilder,
               private statsService: StatsService) { }
@@ -37,6 +41,10 @@ export class StatsViewComponent implements OnInit{
     this.damages = 0;
     this.moyDamages = 0;
     this.previousDamagesValue = 0;
+    this.top = 0;
+    this.previousTopValue = 0;
+    this.moyTop = 0;
+
     this.statsSubscription = this.statsService.statsSubject.subscribe(
       (stats: Stats[]) => {
         this.stats = stats;
@@ -59,6 +67,9 @@ export class StatsViewComponent implements OnInit{
       this.previousDamagesValue = 0;
       this.nbrKills = 0;
       this.moyKills = 0;
+      this.moyDamages = 0;
+      this.damages = 0;
+      this.moyTop = 0;
       this.statsService.resetStats();
       this.stats = [];
       this.nbrGame = 0;
@@ -83,18 +94,20 @@ export class StatsViewComponent implements OnInit{
     this.damages = formValue['damages'] + this.previousDamagesValue;
     this.previousDamagesValue = this.damages;
     this.moyDamages = this.damages/this.nbrGame;
-    
-    // for(let stat of this.stats){
-    //   this.damages += stat.damages;
-    // }    
+
+    this.top = formValue['top'] + this.previousTopValue;
+    this.previousTopValue = this.top;
+    this.moyTop = this.top/this.nbrGame;
     
     const gameStats = new Stats(
       formValue['nbrKills'],
       formValue['top'],
       formValue['damages']
     );
+    
     this.statsService.addGameStats(gameStats);
     this.initForm();
+    this.bestGame = this.statsService.getBestGame();
   }
 
   ngOnDestroy(){
