@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+## Install
+
+1) Get Node from https://nodejs.org/en/
+1.5) Open command prompt for the next steps
+2) Get NPM => npm install -g npm@lastest (verify you get it with npm -v)
+3) Get angular => npm install -g @angular/cli
+4) Go to the project's root
+5) Install it with npm install
+6) Run ng serve then go to localhost:4200 in your browser
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
