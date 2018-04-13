@@ -19,7 +19,7 @@ export class LocationService{
             status: true
         },
         {
-            id:13,
+            id:3,
             name: 'Fatal Fields',
             status: true
         },

@@ -16,8 +16,8 @@
         </div>
 
 
-
-        <h3 *ngIf="ready" class="randomLocation text-center">{{ randomLocation.name }}</h3>
+        <!-- <h3 *ngIf="!ready" class="randomLocation text-center">Click to start</h3> -->
+        <h3 [ngClass]="{'selected': selected == true}" class="randomLocation text-center">{{ randomLocation.name }}</h3>
         
         <button class="bold btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
     </div>

@@ -19,7 +19,7 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
   moreThanOne: boolean;
   moreThanOneSubscription: Subscription;
   animate: boolean = false;
-  ready = false;
+  selected = false;
 
   constructor(private locationService: LocationService) { }
 
@@ -47,10 +47,10 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
     }
     this.randomLocation = this.tempLocations[this.roll];
     this.previousRoll = this.roll;
-    this.moreThanOne = false;
+    this.moreThanOne = false;//disable reroll btn while animated
   }
   reroll(){
-   
+    this.selected=false;
     this.tempLocations = this.locations.filter(location => location.status === true);
     this.animate=true;
     
@@ -63,12 +63,13 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
                     clearInterval(rollAnimate);
                     this.moreThanOne = true;
                     resolve(true);
+                    this.selected=true;
                 }, 2000 
             );
         }
       );
       const rollAnimate = setInterval(() => { this.rollInterval(); }, 100);
-      this.ready = true;
+      
     } else {
       alert("Please choose more than one location !");
       this.isOkToRoll();
