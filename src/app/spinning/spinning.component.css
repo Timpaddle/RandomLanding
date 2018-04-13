@@ -6,3 +6,7 @@
     font-size: 1.8rem;
     font-weight: bold;
 }
+
+.btn.disabled, .btn[disabled]{
+    opacity: 1;
+}

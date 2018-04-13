@@ -20,6 +20,9 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
   moreThanOneSubscription: Subscription;
   animate: boolean = false;
   selected = false;
+  isRollinSubscription: Subscription;
+  isRollin: boolean;
+  
 
   constructor(private locationService: LocationService) { }
 
@@ -37,6 +40,14 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
       }
     );
     this.locationService.emitLocationSubject();
+
+    this.isRollinSubscription = this.locationService.isRollinSubject.subscribe(
+      (isRollin: boolean) => {
+        this.isRollin = isRollin;
+      }
+    );
+    this.locationService.emitIsRollinSubject();
+
     this.reroll(); // init first value
     
   }
@@ -48,6 +59,8 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
     this.randomLocation = this.tempLocations[this.roll];
     this.previousRoll = this.roll;
     this.moreThanOne = false;//disable reroll btn while animated
+    this.locationService.rollin();
+    this.locationService.emitIsRollinSubject();
   }
   reroll(){
     this.selected=false;
@@ -62,6 +75,8 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
                 () => {
                     clearInterval(rollAnimate);
                     this.moreThanOne = true;
+                    this.locationService.noRollin();
+                    this.locationService.emitIsRollinSubject();
                     resolve(true);
                     this.selected=true;
                 }, 2000 
@@ -96,6 +111,7 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.locationSubscription.unsubscribe();
     this.moreThanOneSubscription.unsubscribe();
+    this.isRollinSubscription.unsubscribe();
   }
 
 

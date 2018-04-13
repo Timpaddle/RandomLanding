@@ -39,6 +39,10 @@ h3.randomLocation{
     animation: selected .7s linear;
 }
 
+.btnAll.disabled, .btnAll[disabled]{
+    opacity: 1;
+}
+
 @keyframes selected{
     0%{transform:scale(1)}
     50%{transform: scale(1.3)}

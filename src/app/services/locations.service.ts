@@ -5,7 +5,9 @@ export class LocationService{
     locationSubject = new Subject<any[]>();
 
     moreThanOneSubject = new Subject<boolean>();
+    isRollinSubject = new Subject<boolean>();
 
+    private isRollin = false;
     private moreThanOne = true;
     private locations = [
         {
@@ -112,6 +114,9 @@ export class LocationService{
     emitMoreThanOneSubject(){
         this.moreThanOneSubject.next(this.moreThanOne);
     }
+    emitIsRollinSubject(){
+        this.isRollinSubject.next(this.isRollin);
+    }
 
     switchOnOne(i: number){
         this.locations[i].status = true;
@@ -156,6 +161,16 @@ export class LocationService{
             this.moreThanOne = false;
         }
         this.emitMoreThanOneSubject();
+      }
+
+      rollin(){
+          this.isRollin = true;
+          this.emitIsRollinSubject();
+      }
+
+      noRollin(){
+          this.isRollin = false;
+          this.emitIsRollinSubject();
       }
 
     

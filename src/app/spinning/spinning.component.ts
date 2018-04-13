@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LocationService } from '../services/locations.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-spinning',
@@ -12,10 +13,18 @@ export class SpinningComponent implements OnInit {
   @Input() locationStatus: boolean;
   @Input() locationId: number;
   @Input() index: number;
+  isRollinSubscription: Subscription;
+  isRollin:boolean;
   
   constructor(private locationService: LocationService) { }
 
   ngOnInit() {
+    this.isRollinSubscription = this.locationService.isRollinSubject.subscribe(
+      (isRollin: boolean) => {
+        this.isRollin = isRollin;
+      }
+    );
+    this.locationService.emitIsRollinSubject();
   }
   
   onToggle(){
