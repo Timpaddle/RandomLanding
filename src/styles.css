@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
 .bold{
     font-weight: bold;
+}
+
+.mainContainer{
+    background: url('assets/img/fortnite.jpg');
+    background-position: center center;
+    padding-top: 90px;
+    height: 100vh;
 }

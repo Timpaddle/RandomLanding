@@ -27,6 +27,7 @@
     justify-content: space-between;
     height: 85vh;
     padding-top: 20px;
+    color: #fff;
 }
 
 .statsContainer{
@@ -53,6 +54,7 @@ form img{
     border:none;
     border-bottom: 1px solid #ddd;
     margin-bottom: 0;
+    color:#000;
 }
 
 .stats-container .row{

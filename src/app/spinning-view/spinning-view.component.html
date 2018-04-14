@@ -8,7 +8,7 @@
                 (click)="onAllOff()">ALL OFF</button><br>
 
 
-        <app-spinning *ngFor = "let location of locations; let i = index "
+        <app-spinning *ngFor = "let location of locations; let i = index"
                 [locationName]="location.name"
                 [locationId]="location.id"
                 [locationStatus]="location.status"
@@ -16,8 +16,7 @@
         </div>
 
 
-        <!-- <h3 *ngIf="!ready" class="randomLocation text-center">Click to start</h3> -->
-        <h3 [ngClass]="{'selected': selected == true}" class="randomLocation text-center">{{ randomLocation.name }}</h3>
+        <h3 *ngIf="randomLocation" [ngClass]="{'selected': selected == true}" class="randomLocation text-center">{{ randomLocation.name }}</h3>
         
         <button class="bold btn btn-lg btn-primary rerollBtn"(click)="reroll()" [disabled]="!moreThanOne">REROLL</button>
     </div>

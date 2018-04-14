@@ -10,13 +10,29 @@ footer{
     bottom: 0;
     display: flex;
     justify-content:flex-end;
-    background:#f4f4f4;
+    background:none;
+    color: #fff;
 }
 
 footer a{
     padding-right: 20px;
 }
 
-.navbar{
+
+nav.navbar{
+    position: fixed;
+    top:0;
     margin-bottom: 0;
+    background: none;
 }
+.navbar-collapse, .container-fluid{
+    padding: 0;
+}
+
+.navbar-default .navbar-nav > .active > a{
+    color:#555;
+}
+nav.navbar ul li a{
+    color: #fff;
+}
+

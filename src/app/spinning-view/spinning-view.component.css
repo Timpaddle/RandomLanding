@@ -28,11 +28,11 @@ h3.randomLocation{
     font-size: 1.5rem;
 }
 
-.mainContainer{
-    background: url('assets/img/fortnite.jpg');
-    background-position: center center;
-    padding-top: 20px;
-    height: 95vh;
+
+
+footer{
+    background: none;
+    color: #fff;
 }
 
 .selected {
