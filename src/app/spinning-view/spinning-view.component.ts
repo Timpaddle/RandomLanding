@@ -1,13 +1,16 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { LocationService } from '../services/locations.service';
 import { Subscription } from 'rxjs/Subscription';
-
+import { OrderByPipe } from '../orderbyname.pipe';
 
 @Component({
   selector: 'app-spinning-view',
   templateUrl: './spinning-view.component.html',
-  styleUrls: ['./spinning-view.component.css']
+  styleUrls: ['./spinning-view.component.css'],
+  // providers:[OrderByPipe]
+
 })
+
 export class SpinningViewComponent implements OnInit, OnDestroy {
 
   locations: any[];
@@ -40,7 +43,7 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
       }
     );
     this.locationService.emitLocationSubject();
-
+    
     this.isRollinSubscription = this.locationService.isRollinSubject.subscribe(
       (isRollin: boolean) => {
         this.isRollin = isRollin;
@@ -65,6 +68,7 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
   reroll(){
     this.selected=false;
     this.tempLocations = this.locations.filter(location => location.status === true);
+
     this.animate=true;
     
     if(this.tempLocations.length > 1){ //si plus d'un spot à été sélectionné
@@ -113,6 +117,7 @@ export class SpinningViewComponent implements OnInit, OnDestroy {
     this.moreThanOneSubscription.unsubscribe();
     this.isRollinSubscription.unsubscribe();
   }
+
 
 
 }

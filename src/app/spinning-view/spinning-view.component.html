@@ -5,7 +5,8 @@
             <button [disabled]="isRollin" class="bold btnAll btn btn-sm btn-success"
                 (click)="onAllOn()">ALL ON</button>
             <button [disabled]="isRollin" class="bold btnAll btn btn-sm btn-danger"
-                (click)="onAllOff()">ALL OFF</button><br>
+                (click)="onAllOff()">ALL OFF</button>
+            <a style="float:right" class="bold btn btn-info" routerLink="../add-location">CUSTOM LOCATIONS</a><br>
 
 
         <app-spinning *ngFor = "let location of locations; let i = index"

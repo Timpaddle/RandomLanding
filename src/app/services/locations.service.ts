@@ -1,8 +1,10 @@
 import { Subject } from 'rxjs/Subject';
+import { Location } from '../models/location.model';
 
 export class LocationService{
 
-    locationSubject = new Subject<any[]>();
+    locationSubject = new Subject<Location[]>();
+    newLocationSubject = new Subject<Location[]>();
 
     moreThanOneSubject = new Subject<boolean>();
     isRollinSubject = new Subject<boolean>();
@@ -13,12 +15,12 @@ export class LocationService{
         {
             id:1,
             name: 'Anarchy Acres',
-            status: true
+            status: true,
         },
         {
             id:2,
             name: 'Dusty Depot',
-            status: true
+            status: true,
         },
         {
             id:3,
@@ -107,9 +109,14 @@ export class LocationService{
             status: true
         }
     ];
+    private newLocations = [];
+    // private locations = this.tempLocations.filter(location => location.userId === 'hMpmyXK1HCP6WDLusT3ZAptYjOx2');
 
-    emitLocationSubject(){
-        this.locationSubject.next(this.locations.slice());
+    emitNewLocationSubject(){
+        this.newLocationSubject.next(this.newLocations);
+    }
+    emitLocationSubject(){        
+        this.locationSubject.next(this.locations);
     }
     emitMoreThanOneSubject(){
         this.moreThanOneSubject.next(this.moreThanOne);
@@ -161,17 +168,45 @@ export class LocationService{
             this.moreThanOne = false;
         }
         this.emitMoreThanOneSubject();
-      }
+    }
 
-      rollin(){
-          this.isRollin = true;
-          this.emitIsRollinSubject();
-      }
+    rollin(){
+        this.isRollin = true;
+        this.emitIsRollinSubject();
+    }
 
-      noRollin(){
-          this.isRollin = false;
-          this.emitIsRollinSubject();
-      }
+    noRollin(){
+        this.isRollin = false;
+        this.emitIsRollinSubject();
+    }
+
+    addLocation(newLocation: Location){
+        newLocation.id = this.locations.length+1;
+        this.newLocations.push(newLocation);
+        this.locations.push(newLocation);
+        this.emitLocationSubject();
+    }
+
+    removeLocation(location: Location){
+        const locationIndexToRemove = this.locations.findIndex(
+            (locEl) => {
+                if(locEl === location){
+                    return true;
+                }
+            }
+        );
+        const newLocationIndexToRemove = this.newLocations.findIndex(
+            (locEl) => {
+                if(locEl === location){
+                    return true;
+                }
+            }
+        );
+        this.locations.splice(locationIndexToRemove,1);
+        this.newLocations.splice(newLocationIndexToRemove,1);
+        this.emitNewLocationSubject();
+        this.emitLocationSubject();
+    }
 
     
 }

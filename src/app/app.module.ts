@@ -12,6 +12,11 @@ import { StatsViewComponent } from './stats-view/stats-view.component';
 
 import { LocationService } from './services/locations.service';
 import { StatsService } from './services/stats.service';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthService } from './services/auth.service';
+import { HeaderComponent } from './header/header.component';
+import { AddLocationComponent } from './add-location/add-location.component';
 
 
 
@@ -19,7 +24,11 @@ import { StatsService } from './services/stats.service';
 const appRoutes: Routes = [
   { path: 'random-landing', component: SpinningViewComponent },
   { path: 'session-stats', component: StatsViewComponent },
-  { path: '', component: SpinningViewComponent }
+  { path: 'add-location', component: AddLocationComponent },
+  { path: 'auth/signup', component: SignupComponent },
+  { path: 'auth/signin', component: SigninComponent },
+  { path: '**', redirectTo: 'random-landing' },
+  { path: '', redirectTo: 'random-landing', pathMatch: 'full' }
 ]
 
 @NgModule({
@@ -27,7 +36,11 @@ const appRoutes: Routes = [
     AppComponent,
     SpinningViewComponent,
     SpinningComponent,
-    StatsViewComponent
+    StatsViewComponent,
+    SigninComponent,
+    SignupComponent,
+    HeaderComponent,
+    AddLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +50,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     LocationService,
-    StatsService
+    StatsService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

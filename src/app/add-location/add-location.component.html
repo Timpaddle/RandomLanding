@@ -1,0 +1,28 @@
+<div class="mainContainer">
+  <div class="col-sm-3 col-sm-offset-2">
+    <h2>Add new location</h2>
+    <form [formGroup]="locationForm" (ngSubmit)="onSaveLocation()">
+      <div class="form-group">
+        <label for="name">Location name</label>
+        <input type="text" id="name"
+               class="form-control" formControlName="name">
+      </div>
+      <button class="btn btn-success" [disabled]="locationForm.invalid"
+            type="submit">Save
+      </button>
+    </form>
+  </div>
+  <div class="col-sm-3 col-sm-offset-2 scrollable">
+    <ul class="list-group">
+      <li style="margin-bottom: 5px" class="list-group-item" *ngFor="let newLocation of newLocations">
+        <div>
+            <h4>{{ newLocation.name }}
+                <button class="btn btn-default pull-right" (click)="onRemoveLocation(newLocation)">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </h4>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

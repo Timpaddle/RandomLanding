@@ -1,0 +1,10 @@
+.list-group-item{
+    background: transparent;
+}
+
+.scrollable{
+    overflow-y: scroll;
+    height: 75vh;
+    border: 1px solid #ddd;
+    padding: 5px 5px;
+}
